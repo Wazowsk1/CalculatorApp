@@ -4,12 +4,12 @@ func getLastChar (str: String) -> String {
   return str.isEmpty ? "" : String(str.last!)
 }
 
-func lastCharacterIsEqualTo (str: String, char: String) -> Bool {
+func isLastCharacterEqualTo (str: String, char: String) -> Bool {
   let last = getLastChar(str: str)
   return last == char
 }
 
-func formatResult (val: Double) -> String {
+func formatResult(_ val: Double) -> String {
   let numberFormatter = NumberFormatter()
   numberFormatter.numberStyle = .decimal
   numberFormatter.maximumFractionDigits = 16

@@ -1,9 +1,12 @@
 import SwiftUI
 
 struct ComputationView: View {
+  
+  //MARK: - Properties
   let currentComputation: String
   let mainResult: String
   
+  //MARK: - Body
   var body: some View {
     VStack(spacing: 10) {
       HStack {
@@ -12,7 +15,6 @@ struct ComputationView: View {
         Text(currentComputation)
           .foregroundStyle(.calcText)
           .lineLimit(1)
-          .font(ipadAdaptive() ? .largeTitle : .body)
       }
       .minimumScaleFactor(0.1)
       
@@ -31,9 +33,3 @@ struct ComputationView: View {
   }
 }
 
-#Preview {
-  ComputationView(
-    currentComputation: "5 + 5",
-    mainResult: "10"
-  )
-}

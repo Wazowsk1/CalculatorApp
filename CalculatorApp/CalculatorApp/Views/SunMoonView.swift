@@ -1,33 +1,36 @@
 import SwiftUI
 
-struct SunMoonView: View {
-  var lightMode: Bool
+struct SunMoonToggleView: View {
   
+  // MARK: - Properties
+  @Binding var lightMode: Bool
+  
+  // MARK: - Body
   var body: some View {
-    HStack(spacing: 0) {
-      Image(systemName: "sun.min")
-        .foregroundStyle(lightMode ? Color.white : Color.secondary)
-        .frame(width: 20, height: 20)
-        .padding()
-        .padding(.leading, 10)
-        .background(lightMode ? Color(.yellow) : Color(.systemGray5))
+    ZStack {
+      RoundedRectangle(cornerRadius: 25)
+        .fill(.calcSecondary)
+        .frame(width: 90, height: 40)
       
-      Image(systemName: "moon")
-        .foregroundStyle(lightMode ? Color.secondary : Color.white)
-        .frame(width: 20, height: 20)
-        .padding()
-        .padding(.trailing, 10)
-        .background(lightMode ? Color(.systemGray5) : Color(.blue))
+      HStack {
+        Image(systemName: "sun.min.fill")
+        Spacer()
+        Image(systemName: "moon.fill")
+      }
+      .padding(.horizontal, 12)
+      
+      Circle()
+        .fill(lightMode ? Color.yellow : Color.blue)
+        .frame(width: 35, height: 35)
+        .offset(x: lightMode ? -25 : 25)
+        .animation(.spring(response: 0.4, dampingFraction: 0.6), value: lightMode)
     }
-    .imageScale(.large)
-    .font(ipadAdaptive() ? .title : .body)
-    .fontWeight(ipadAdaptive() ? .semibold : .regular)
-//    .padding()
-//    .background(.calcThirds)
-    .clipShape(RoundedRectangle(cornerRadius: 20))
+    .frame(width: 90, height: 40)
+    .onTapGesture {
+      withAnimation {
+        lightMode.toggle()
+      }
+    }
   }
 }
 
-#Preview {
-  SunMoonView(lightMode: true)
-}

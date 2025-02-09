@@ -1,67 +1,46 @@
 import SwiftUI
 
 struct ButtonView: View {
-  let calcButton: CalcButton
   
+  //MARK: - Properties
+  let calcButton: CalcButton
   let fgColor: Color
   let bgColor: Color
+  let buttonDim: CGFloat
   
+  //MARK: - Computed Properties
   var systemImage: String? {
-    let value = calcButton.rawValue
-    return value
-      .contains("IMG") ? value
-      .replacingOccurrences(of: "IMG", with: "") : nil
+    calcButton.rawValue.contains("IMG") ? calcButton.rawValue.replacingOccurrences(of: "IMG", with: "") : nil
   }
   
   var text: String? {
-    let value = calcButton.rawValue
-    return value
-      .contains("IMG") ? nil : value
+    calcButton.rawValue.contains("IMG") ? nil : calcButton.rawValue
   }
   
-  let buttonDiM: CGFloat = ipadAdaptive() ?
-    UIScreen.main.bounds.width / 6 : UIScreen.main.bounds.width / 5
-  
+  // MARK: - Initializer
+  init(calcButton: CalcButton, fgColor: Color, bgColor: Color, screenWidth: CGFloat) {
+    self.calcButton = calcButton
+    self.fgColor = fgColor
+    self.bgColor = bgColor
+    self.buttonDim = screenWidth / 5
+  }
+
+  //MARK: - Body
   var body: some View {
     ZStack {
-      Text(text ?? "")
+      if let text = text {
+        Text(text)
+      }
       
-      Image(systemName: systemImage ?? "")
+      if let systemImage = systemImage {
+        Image(systemName: systemImage)
+      }
     }
-    .font(ipadAdaptive() ? .largeTitle : .title2)
-    .fontWeight(ipadAdaptive() ? .bold : .semibold)
-    .frame(width: buttonDiM, height: buttonDiM)
+    .font(.title2)
+    .fontWeight(.semibold)
+    .frame(width: buttonDim, height: buttonDim)
     .foregroundStyle(fgColor)
     .background(bgColor)
     .clipShape(RoundedRectangle(cornerRadius: 16))
-    .shadow(color: bgColor.opacity(0.5), radius: 3, x: 5, y: 5)
-  }
-}
-
-#Preview {
-  VStack {
-    ButtonView(
-      calcButton: .one,
-      fgColor: .calcText,
-      bgColor: .calcThirds
-    )
-    
-    ButtonView(
-      calcButton: .undo,
-      fgColor: .calcText,
-      bgColor: .calcThirds
-    )
-    
-    ButtonView(
-      calcButton: .percent,
-      fgColor: .calcCyan,
-      bgColor: .calcThirds
-    )
-    
-    ButtonView(
-      calcButton: .divide,
-      fgColor: .calcOrange,
-      bgColor: .calcThirds
-    )
   }
 }

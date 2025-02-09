@@ -1,9 +1,11 @@
 import Foundation
 
+// MARK: - Operations
 enum Operation {
-  case add, substact, multiply, divide, equal, none
+  case add, subtract, multiply, divide, equal, none
 }
 
+// MARK: - Calculator Buttons
 enum CalcButton: String {
   case zero = "0"
   case one = "1"
@@ -16,7 +18,7 @@ enum CalcButton: String {
   case eight = "8"
   case nine = "9"
   case add = "+"
-  case substact = "-"
+  case subtract = "-"
   case multiply = "×"
   case divide = "÷"
   case equal = "="
@@ -27,9 +29,10 @@ enum CalcButton: String {
   case undo = "IMGarrow.uturn.backward"
 }
 
-let enumOperators: [CalcButton] = [.substact, .add, .divide, .multiply]
+// MARK: - Operators
+let enumOperators: [CalcButton] = [.subtract, .add, .divide, .multiply]
 
 let multiplySymbol = CalcButton.multiply.rawValue
-let divionSymbol = CalcButton.divide.rawValue
+let divisionSymbol = CalcButton.divide.rawValue
 
-let operators = "+-\(multiplySymbol)\(divionSymbol)"
+let operators = "+-\(multiplySymbol)\(divisionSymbol)"
