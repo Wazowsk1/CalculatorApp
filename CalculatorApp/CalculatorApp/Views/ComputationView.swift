@@ -13,7 +13,7 @@ struct ComputationView: View {
         Spacer()
         
         Text(currentComputation)
-          .foregroundStyle(.calcText)
+          .foregroundStyle(Color.calcText)
           .lineLimit(1)
       }
       .minimumScaleFactor(0.1)
@@ -22,7 +22,7 @@ struct ComputationView: View {
         Spacer()
         
         Text(mainResult)
-          .foregroundStyle(.calcText)
+          .foregroundStyle(Color.calcText)
           .lineLimit(1)
           .font(.largeTitle)
           .fontWeight(.bold)

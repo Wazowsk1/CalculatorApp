@@ -20,8 +20,8 @@ struct ButtonView: View {
   // MARK: - Initializer
   init(calcButton: CalcButton, fgColor: Color, bgColor: Color, screenWidth: CGFloat) {
     self.calcButton = calcButton
-    self.fgColor = fgColor
-    self.bgColor = bgColor
+    self.fgColor = CalcButtonView.buttonColor(calcButton)
+    self.bgColor = .calcSecondary
     self.buttonDim = screenWidth / 5
   }
 

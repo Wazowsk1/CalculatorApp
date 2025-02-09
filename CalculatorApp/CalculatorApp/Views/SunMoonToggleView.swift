@@ -9,7 +9,7 @@ struct SunMoonToggleView: View {
   var body: some View {
     ZStack {
       RoundedRectangle(cornerRadius: 25)
-        .fill(.calcSecondary)
+        .fill(Color.calcSecondary)
         .frame(width: 90, height: 40)
       
       HStack {
