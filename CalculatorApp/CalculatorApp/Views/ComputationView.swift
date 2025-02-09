@@ -12,6 +12,7 @@ struct ComputationView: View {
         Text(currentComputation)
           .foregroundStyle(.calcText)
           .lineLimit(1)
+          .font(ipadAdaptive() ? .largeTitle : .body)
       }
       .minimumScaleFactor(0.1)
       
