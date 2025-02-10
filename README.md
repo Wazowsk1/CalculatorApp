@@ -21,8 +21,7 @@ A modern calculator app built for iOS, following the MVVC (Model-View-ViewModel-
 
 <h3>📦 Installation:</h3>
 
-1. Clone the repository:
-git clone https:[https://github.com/Yuldshev/CalculatorApp]
+1. Clone the repository.
 2. Open the project in Xcode.
 3. Run the project on a simulator or a real device.
 
